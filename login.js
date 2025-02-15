@@ -58,6 +58,7 @@ export const createLogin = () => {
                     backdrop.remove();
                 }
                 window.location.hash = 'admin';
+                document.getElementById("admin").style.display = 'block';
                 document.getElementById("home").style.display = 'none';
                 document.getElementById("user-ad").innerHTML = inputName.value
                 //cTableAdmin(tableContAd,list)
