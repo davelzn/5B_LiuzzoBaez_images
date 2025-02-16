@@ -13,17 +13,17 @@ createLogin();
     const button = document.querySelector("#button");
     const link = document.querySelector("#link");
   
-    handleSubmit = async (event) => {
+    const handleSubmit = async (event) => {
       const formData = new FormData();
       formData.append("file", inputFile.files[0]);
       const body = formData;
-      body.description = inputDescription.value;
       const fetchOptions = {
         method: 'post',
         body: body
       };
       try {
-        const res = await fetch("/upload", fetchOptions);
+        const res = await fetch("http://localhost:5600/upload", fetchOptions);
+        if (!res.ok) throw new Error(`Errore HTTP: ${res.status}`);
         const data = await res.json();
         link.setAttribute("href", data.url);
         link.innerText = data.url;

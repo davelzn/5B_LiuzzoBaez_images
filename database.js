@@ -5,7 +5,7 @@ conf.ssl = {
     ca: fs.readFileSync(__dirname + '/ca.pem')
 }
 const connection = mysql.createConnection(conf);
-
+console.log(connection)
 const executeQuery = (sql) => {
     return new Promise((resolve, reject) => {      
           connection.query(sql, function (err, result) {
@@ -49,3 +49,4 @@ const database = {
         return executeQuery(sql); 
     }
 }
+module.exports = database;
