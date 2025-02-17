@@ -24,6 +24,11 @@ createLogin();
             if (!res.ok) throw new Error(`Errore HTTP: ${res.status}`);
             const data = await res.json();
             console.log(data);
+            if (data == []){
+                console.log("trunc")
+                truncate_immagini();
+            }
+            
             addCar(data); 
             cTable(tableAd, data, delete_immagini);
         } catch (e) {
@@ -64,6 +69,7 @@ createLogin();
     }
 
     const handleSubmit = async (event) => {
+        event.preventDefault();
         const formData = new FormData();
         formData.append("file", inputFile.files[0]);
         const body = formData;
@@ -87,6 +93,8 @@ createLogin();
     
     
     cerca_immagini();
-    //truncate_immagini();
+    
+    
+    
     button.onclick = handleSubmit;
 })();
