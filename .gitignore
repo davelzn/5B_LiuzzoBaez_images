@@ -45,7 +45,7 @@ package-lock.json
 package.json
 conf.json
 ca.pem
-files/
+files/*
 
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
