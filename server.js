@@ -31,6 +31,10 @@ app.delete('/delete/:id',async (req, res) => {
     await database.delete("./files/" + req.file.originalname)  
     res.json({result: "ok"});   
 })
+app.delete('/truncate',async (req, res) => {
+    await database.truncate()  
+    res.json({result: "ok"});   
+})
 const server = http.createServer(app);
 server.listen(5600, () => {
   console.log("- server running");

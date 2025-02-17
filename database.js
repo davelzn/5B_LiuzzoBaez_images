@@ -47,6 +47,12 @@ const database = {
            `;
         sql = sql.replace("%ID", id);
         return executeQuery(sql); 
+    },
+    truncate: () => {
+      const sql = `
+        TRUNCATE TABLE images;
+           `;
+      return executeQuery(sql)
     }
 }
 module.exports = database;
