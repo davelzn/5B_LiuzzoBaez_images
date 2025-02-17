@@ -25,6 +25,7 @@ app.post('/upload',multer({ storage: storage}).single('file'),async (req, res) =
 app.get('/images',async (req, res) => {
     const list = await database.select();
     res.json(list);    
+    console.log(list);
 })
 app.delete('/delete/:id',async (req, res) => {
     await database.delete("./files/" + req.file.originalname)  

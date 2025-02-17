@@ -12,28 +12,37 @@ createLogin();
     const inputFile = document.querySelector('#file');
     const button = document.querySelector("#button");
     const link = document.querySelector("#link");
-  
+
     const handleSubmit = async (event) => {
-      const formData = new FormData();
-      formData.append("file", inputFile.files[0]);
-      const body = formData;
-      const fetchOptions = {
-        method: 'post',
-        body: body
-      };
-      try {
-        const res = await fetch("http://localhost:5600/upload", fetchOptions);
-        if (!res.ok) throw new Error(`Errore HTTP: ${res.status}`);
-        const data = await res.json();
-        console.log(data)
-        link.setAttribute("href", data.url);
-        link.innerText = data.url;
-      } catch (e) {
-        console.log(e);
-      }
+        const formData = new FormData();
+        formData.append("file", inputFile.files[0]);
+        const body = formData;
+        const fetchOptions = {
+            method: 'post',
+            body: body
+        };
+        try {
+            const res = await fetch("http://localhost:5600/upload", fetchOptions);
+            if (!res.ok) throw new Error(`Errore HTTP: ${res.status}`);
+            const data = await res.json();
+            console.log(data);
+            link.setAttribute("href", data.url);
+            link.innerText = data.url;
+            addCar(data.url); 
+        } catch (e) {
+            console.log(e);
+        }
     }
-  
+
+    function addCar(imgUrl) {
+        const carouselInner = document.querySelector('#carousel'); 
+        const html = `
+            <div class="carousel-item">
+                <img src="${imgUrl}" class="d-block w-100" alt="Image">
+            </div>
+        `;
+        carouselInner.innerHTML = html;
+    }
+
     button.onclick = handleSubmit;
-  })();
-  
-  //carosello
+})();
