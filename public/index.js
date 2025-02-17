@@ -1,12 +1,17 @@
 import { createLogin } from '../login.js';
+import { addCar } from '../carosello.js';
+import { cTable } from '../table.js';
+//import { createNavigator } from '../navigator.js';
 
-
-const homeBtn = document.getElementById("home-btn-ad")
+//const navigator = createNavigator(document.querySelector('#container'));
+const homeBtn = document.getElementById("home-btn-ad");
+const tableAd = document.getElementById("ad-table");
 homeBtn.onclick = () => {
     document.getElementById("admin").style.display = 'none';
     document.getElementById("home").style.display = 'block';
 }
 createLogin();
+
 
 (async () => {
     const inputFile = document.querySelector('#file');
@@ -20,6 +25,7 @@ createLogin();
             const data = await res.json();
             console.log(data);
             addCar(data); 
+            cTable(data);
         } catch (e) {
             console.log(e);
         }
@@ -74,28 +80,9 @@ createLogin();
         }
     }
 
-    function addCar(imgUrl) {
-        console.log(imgUrl)
-        const carouselInner = document.querySelector('#carousel');
-        let html="";
-        imgUrl.forEach((img,index)=> {
-            console.log(img,img.name)
-            if (index===0){
-                html += `
-            <div class="carousel-item active">
-                <img src=".${img.name}" class="d-block w-100" alt="Image">
-            </div>
-        `;
-            }else
-            {html += `
-            <div class="carousel-item">
-                <img src=".${img.name}" class="d-block w-100" alt="Image">
-            </div>
-        `;}
-        }); 
-        console.log(html)
-        carouselInner.innerHTML = html;
-    }
+    
+    
     cerca_immagini();
+    //truncate_immagini();
     button.onclick = handleSubmit;
 })();
