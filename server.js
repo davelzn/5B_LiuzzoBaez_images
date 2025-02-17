@@ -28,7 +28,8 @@ app.get('/images',async (req, res) => {
     console.log(list);
 })
 app.delete('/delete/:id',async (req, res) => {
-    await database.delete("./files/" + req.file.originalname)  
+    const id = req.params.id;
+    await database.delete(id)  
     res.json({result: "ok"});   
 })
 app.delete('/truncate',async (req, res) => {

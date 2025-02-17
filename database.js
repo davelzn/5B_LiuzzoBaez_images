@@ -41,11 +41,12 @@ const database = {
         return executeQuery(sql); 
     },
     delete: (id) => {
-        const sql = `
+        let sql = `
         DELETE FROM images
-        WHERE id=$ID
+        WHERE id=%ID
            `;
         sql = sql.replace("%ID", id);
+        console.log(sql,id)
         return executeQuery(sql); 
     },
     truncate: () => {

@@ -39,6 +39,20 @@ createLogin();
         }
     }
 
+    const delete_immagini = async (id) => {
+        try {
+            const res = await fetch(`http://localhost:5600/delete/${id}`, {
+                method: "DELETE" // Specifica il metodo DELETE
+            });
+            if (!res.ok) throw new Error(`Errore HTTP: ${res.status}`);
+            const data = await res.json();
+            console.log(data);
+            addCar(data); 
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
     const handleSubmit = async (event) => {
         const formData = new FormData();
         formData.append("file", inputFile.files[0]);
