@@ -25,7 +25,7 @@ createLogin();
             const data = await res.json();
             console.log(data);
             addCar(data); 
-            cTable(data);
+            cTable(tableAd, data, delete_immagini);
         } catch (e) {
             console.log(e);
         }
@@ -39,7 +39,8 @@ createLogin();
             if (!res.ok) throw new Error(`Errore HTTP: ${res.status}`);
             const data = await res.json();
             console.log(data);
-            addCar(data); 
+            addCar(data);
+            cTable(tableAd, data, delete_immagini);
         } catch (e) {
             console.log(e);
         }
@@ -51,9 +52,12 @@ createLogin();
                 method: "DELETE" // Specifica il metodo DELETE
             });
             if (!res.ok) throw new Error(`Errore HTTP: ${res.status}`);
-            const data = await res.json();
+            const res1 = await fetch("http://localhost:5600/images");
+            if (!res1.ok) throw new Error(`Errore HTTP: ${res1.status}`);
+            const data = await res1.json();
             console.log(data);
             addCar(data); 
+            cTable(tableAd, data, delete_immagini);
         } catch (e) {
             console.log(e);
         }

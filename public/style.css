@@ -189,3 +189,50 @@ button:hover {
 .visible {
     display: block;
 }
+/*TABELLA*/
+.table-ad {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: "Arial", sans-serif;
+    background: #1e1e2f;
+    color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.table-ad thead {
+    background: #ff4757;
+    color: white;
+    font-size: 1.1em;
+    text-transform: uppercase;
+}
+
+.table-ad th, .table-ad td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.table-ad tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 0.3s ease-in-out;
+}
+
+.table-ad tbody tr:hover {
+    background: rgba(255, 71, 87, 0.2);
+}
+
+.del-btn {
+    background: #ff4757;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+}
+
+.del-btn:hover {
+    background: #e84118;
+    transform: scale(1.05);
+}
