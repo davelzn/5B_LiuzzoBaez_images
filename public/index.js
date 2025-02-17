@@ -25,6 +25,7 @@ createLogin();
         const res = await fetch("http://localhost:5600/upload", fetchOptions);
         if (!res.ok) throw new Error(`Errore HTTP: ${res.status}`);
         const data = await res.json();
+        console.log(data)
         link.setAttribute("href", data.url);
         link.innerText = data.url;
       } catch (e) {
