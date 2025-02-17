@@ -47,6 +47,18 @@ export const createLogin = () => {
 
     loginButton.onclick = () => {
         console.log(inputName.value, inputPassword.value);
+        if(isLogged){
+            loginModal.style.display = "none";
+            document.body.classList.remove('modal-open');
+            const backdrop = document.querySelector('.modal-backdrop');
+            if (backdrop) {
+                backdrop.remove();
+            }
+            window.location.hash = 'admin';
+            document.getElementById("admin").style.display = 'block';
+            document.getElementById("home").style.display = 'none';
+            document.getElementById("user-ad").innerHTML = inputName.value
+        }
         login(inputName.value, inputPassword.value).then(result => {
             if (result) {
                 isLogged = true;
